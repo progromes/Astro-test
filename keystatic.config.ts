@@ -3,7 +3,6 @@ import { config, fields, collection } from '@keystatic/core';
 export default config({
   storage: {
     kind: 'cloud',
-    pathPrefix: 'prod',
   },
   cloud: {
     project: 'astro-test/astro-test',
