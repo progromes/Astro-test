@@ -1,0 +1,55 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .h2-title {
+    @apply font-bold text-2xl md:text-3xl italic mb-10 uppercase;
+  }
+  .link {
+    @apply py-2 px-8 font-medium bg-red rounded-full uppercase w-full block md:w-[240px] text-center;
+  }
+  p {
+    color: #4E4E4E;
+    font-family: Roboto, sans-serif;
+    font-size: 20px;
+    font-weight: 300;
+  }
+  span {
+    color: #4E4E4E;
+    font-family: Roboto, sans-serif;
+    font-size: 20px;
+    font-weight: 900;
+  }
+  li {
+    color: rgba(0, 0, 0,  1);
+    font-family: Roboto, sans-serif;
+    font-size: 20px;
+  }
+  span, a {
+    font-family: Roboto, sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 21px;
+    color: #000;
+  }
+  h1 {
+    font-weight: 700;
+    font-size: 45px;
+    line-height: 150%;
+    color: #000;
+}
+  h2 {
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 150%;
+    color: #000;
+}
+h3 {
+  font-weight: 700;
+  font-size: 25px;
+  line-height: 150%;
+  color: #000;
+}
+}

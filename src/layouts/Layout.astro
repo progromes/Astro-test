@@ -1,24 +1,40 @@
 ---
-import '../styles.css'
+import "@fontsource-variable/montserrat";
 
-export interface Props {
-	title: string;
-}
-
-const { title } = Astro.props;
+import Header from "../components/Header.astro";
+import MainHead from "./MainHead.astro";
+import Footer from "../components/Footer.astro";
+import "../base.css";
+Astro.response.headers.set("Cache-Control", "max-age=2592000,immutable");
+import { NoScriptProperty } from "astro-headless-ui";
 ---
 
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description">
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+<!doctype html>
+<html lang="kk">
+  <MainHead
+    title={"Punch Bet – онлайн казино и букмекер: Ваш Надежный Партнер в Мире Ставок"}
+    description={"Полный обзор букмекерской конторы Punch Bet, включая бонусные программы, способы регистрации, виды ставок и преимущества для игроков."}
+    ogType={"article"}
+    ogTitle={"Punch Bet - онлайн казино и букмекер: Ваш Надежный Партнер в Мире Ставок - jan-jak.com"}
+    ogSiteName={"PinUp онлайн казиносында ойнаңыз: ресми сайт - PinUp Casino ресми жұмыс сайты. Бүгін ойнауды және жеңуді бастаңыз! Тіркеліңіз және бонустар алыңыз"}
+  />
+  <body class="bg-body text-white text-lg font-thin">
+    <div class="wrapper flex flex-col h-screen">
+      <Header />
+      <main class="flex-auto min-w-0 pt-48 sm:pt-16 xl:pt-32 mb-20">
+        <slot />
+      </main>
+      <Footer />
+    </div>
+    <script src="../scripts/main.js"></script>
+    <style is:global>
+      .custom-bg {
+        background: linear-gradient(
+          90.09deg,
+          #131746 -3.16%,
+          rgba(21, 31, 84, 0) 100.58%
+        );
+      }
+    </style>
+  </body>
 </html>

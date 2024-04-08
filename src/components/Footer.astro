@@ -1,0 +1,30 @@
+---
+const navLinks = [
+
+];
+
+const pathname = new URL(Astro.request.url).pathname;
+const currentPath = pathname.slice(1);
+---
+
+<footer class="bg-primary py-10">
+  <div class="container px-3">
+    <div class="flex flex-col md:flex-row items-center justify-between gap-5">
+      <a href="/" class="logo">
+        <img src="/logo-footer.png" alt="image" width={224} height={47} class="h-[47px] w-full" />
+      </a>
+      <div class="w-full border-b-2 border-black">
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+
+<style>
+  @media (min-width: 768px) {
+    .logo {
+      flex: 0 0 224px;
+    }
+  }
+</style>
