@@ -52,4 +52,12 @@ h3 {
   line-height: 150%;
   color: #000;
 }
+.container__content ul{
+  list-style: disc;
+  margin-left: 20px;
+}
+.container__content ol{
+  list-style: numeric;
+  margin-left: 20px;
+}
 }

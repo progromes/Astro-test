@@ -14,11 +14,12 @@ export async function getStaticPaths() {
   const posts = await getCollection("pages");
   return posts.map((post) => ({ params: { slug: post.slug } }));
 }
+
+
 ---
 
-<Layout title={post.data.title}>
-  <div class="container py-8 md:pt-8 md:pb-0 px-3">
-    <h1 class="text-center">{post.data.title}</h1>
+<Layout title={post.data.title} description={post.data.description}>
+  <div class="container py-8 md:pt-8 md:pb-0 px-3 container__content">
     <Content />
   </div>
 </Layout>

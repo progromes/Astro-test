@@ -1,18 +1,22 @@
 ---
-import { SEO } from 'astro-seo';
-const { title, description, ogType, ogTitle, ogSiteName } = Astro.props;
+import { SEO } from "astro-seo";
+
+const { title, description, ogType, ogSiteName, favicon} =
+  Astro.props;
+
 ---
+
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <SEO
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width" />
+  <SEO
     title={title}
     description={description}
     openGraph={{
       basic: {
-        title: `${ogTitle}`,
+        title: `${title}`,
         type: `${ogType}`,
-        image: 'null',
+        image: "null",
       },
       optional: {
         description: description,
@@ -20,13 +24,13 @@ const { title, description, ogType, ogTitle, ogSiteName } = Astro.props;
       },
     }}
     extend={{
-      link: [{ rel: 'icon', href: '/favicons.png' }],
+      link: [{ rel: "icon", href: favicon }],
       meta: [
-        { property: 'og:locale', content: 'en_US' },
-        { name: 'twitter:card', content: 'summary' },
-        { name: 'twitter:title', content: title },
-        { name: 'twitter:description', content: description },
+        { property: "og:locale", content: "en_US" },
+        { name: "twitter:card", content: "summary" },
+        { name: "twitter:title", content: title },
+        { name: "twitter:description", content: description },
       ],
     }}
-    />
-  </head>
+  />
+</head>

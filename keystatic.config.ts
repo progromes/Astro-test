@@ -1,4 +1,4 @@
-import { config, fields, collection } from '@keystatic/core';
+import { config, fields, collection,singleton } from '@keystatic/core';
 
 export default config({
   storage: {
@@ -7,6 +7,7 @@ export default config({
   cloud: {
     project: 'astro-test/astro-test',
   },
+  
   collections: {
     posts: collection({
       label: 'Posts',
@@ -15,6 +16,8 @@ export default config({
       format: { contentField: 'content' },
       schema: {
         title: fields.slug({ name: { label: 'Title' } }),
+        description: fields.text({ label: 'description', multiline: false } ),
+        ogType: fields.text({ label: 'ogType', multiline: false } ),
         content: fields.document({
           label: 'Content',
           formatting: true,
@@ -34,6 +37,14 @@ export default config({
       format: { contentField: 'content' },
       schema: {
         title: fields.slug({ name: { label: 'Title' } }),
+        description: fields.text({ label: 'description', multiline: false } ),
+        ogType: fields.text({ label: 'ogType', multiline: false } ),
+        NavHeader: fields.checkbox({
+          label: 'Show Link with Header',
+        }),
+        NavFooter: fields.checkbox({
+          label: 'Show Link with Footer',
+        }),
         content: fields.document({
           label: 'Content',
           formatting: true,
@@ -45,6 +56,48 @@ export default config({
           },
         }),
       },
+    }),
+  },
+  singletons: {
+    seo: singleton({
+      label: 'SEO',
+      path: 'src/content/Seo',
+      schema: {
+        lang: fields.text({ label: 'lang', multiline: false } ),
+        ogSiteName: fields.text({ label: 'ogSiteName', multiline: false } ),
+        favicon: fields.image({ label: 'favicon', directory: 'public/' }),
+        scripts: fields.document({
+          label: 'Scripts',
+          formatting: true,
+          dividers: true,
+          links: true,
+        }),
+      }
+    }),
+    MainPage: singleton({
+      label: 'Main Page',
+      path: 'src/content/MainPage',
+      schema: {
+        
+        description: fields.text({ label: 'description', multiline: false } ),
+        ogType: fields.text({ label: 'ogType', multiline: false } ),
+        content: fields.document({
+          label: 'Content',
+          formatting: true,
+          dividers: true,
+          links: true,
+          images: {
+            directory: 'src/assets/images/posts',
+            publicPath: '../../assets/images/posts/',
+          },
+        }),
+        seoScripts: fields.document({
+          label: 'SEO Scripts',
+          formatting: true,
+          dividers: true,
+          links: true,
+        }),
+      }
     }),
   },
 });

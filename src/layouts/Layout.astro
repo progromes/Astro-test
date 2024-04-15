@@ -5,18 +5,24 @@ import Header from "../components/Header.astro";
 import MainHead from "./MainHead.astro";
 import Footer from "../components/Footer.astro";
 import "../base.css";
+import { createReader } from "@keystatic/core/reader";
+import keystaticConfig from "/keystatic.config";
+
+const reader = createReader(process.cwd(), keystaticConfig);
+const setting = await reader.singletons.seo.read();
 Astro.response.headers.set("Cache-Control", "max-age=2592000,immutable");
 import { NoScriptProperty } from "astro-headless-ui";
+const { title, description, ogType} = Astro.props;
 ---
 
 <!doctype html>
-<html lang="kk">
+<html lang={setting.lang}>
   <MainHead
-    title={"Punch Bet – онлайн казино и букмекер: Ваш Надежный Партнер в Мире Ставок"}
-    description={"Полный обзор букмекерской конторы Punch Bet, включая бонусные программы, способы регистрации, виды ставок и преимущества для игроков."}
-    ogType={"article"}
-    ogTitle={"Punch Bet - онлайн казино и букмекер: Ваш Надежный Партнер в Мире Ставок - jan-jak.com"}
-    ogSiteName={"PinUp онлайн казиносында ойнаңыз: ресми сайт - PinUp Casino ресми жұмыс сайты. Бүгін ойнауды және жеңуді бастаңыз! Тіркеліңіз және бонустар алыңыз"}
+    title={title}
+    description={description}
+    ogType={ogType}
+    ogSiteName={setting.ogSiteName}
+    favicon={setting.favicon}
   />
   <body class="bg-body text-white text-lg font-thin">
     <div class="wrapper flex flex-col h-screen">
