@@ -5,10 +5,8 @@ export default config({
     kind: 'cloud',
   },
   cloud: {
-    project: 'astro-test/s121',
+    project: 'astro-test/astro-test',
   },
-  
-  
   collections: {
     posts: collection({
       label: 'Posts',
