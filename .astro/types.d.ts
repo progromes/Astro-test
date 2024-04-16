@@ -135,8 +135,15 @@ declare module 'astro:content' {
 
 	type ContentEntryMap = {
 		"pages": {
-"test.mdoc": {
-	id: "test.mdoc";
+"test-2/index.mdoc": {
+	id: "test-2/index.mdoc";
+  slug: "test-2";
+  body: string;
+  collection: "pages";
+  data: any
+} & { render(): Render[".mdoc"] };
+"test/index.mdoc": {
+	id: "test/index.mdoc";
   slug: "test";
   body: string;
   collection: "pages";
@@ -144,6 +151,22 @@ declare module 'astro:content' {
 } & { render(): Render[".mdoc"] };
 };
 "posts": {
+"fdsaf/index.mdoc": {
+	id: "fdsaf/index.mdoc";
+  slug: "fdsaf";
+  body: string;
+  collection: "posts";
+  data: InferEntrySchema<"posts">
+} & { render(): Render[".mdoc"] };
+};
+"seo": {
+"index.mdoc": {
+	id: "index.mdoc";
+  slug: "index";
+  body: string;
+  collection: "seo";
+  data: any
+} & { render(): Render[".mdoc"] };
 };
 
 	};

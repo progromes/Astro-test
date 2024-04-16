@@ -6,7 +6,9 @@ import Footer from "../components/Footer.astro";
 import "../base.css";
 import { createReader } from "@keystatic/core/reader";
 import keystaticConfig from "/keystatic.config";
+import { getCollection } from "astro:content";
 
+const pages = await getCollection("pages");
 const reader = createReader(process.cwd(), keystaticConfig);
 const setting = await reader.singletons.seo.read();
 Astro.response.headers.set("Cache-Control", "max-age=2592000,immutable");
@@ -24,7 +26,7 @@ const { title, description, ogType} = Astro.props;
   />
   <body class="bg-body text-white text-lg font-thin">
     <div class="wrapper flex flex-col h-screen">
-      <Header />
+      <Header pages={pages} />
       <main class="flex-auto min-w-0 pt-48 sm:pt-16 xl:pt-32 mb-20">
         <slot />
       </main>

@@ -2,7 +2,10 @@ import { config, fields, collection,singleton } from '@keystatic/core';
 
 export default config({
   storage: {
-    kind: 'local',
+    kind: 'cloud',
+  },
+  cloud: {
+    project: 'astro-test/astro-test',
   },
   
   
@@ -10,7 +13,8 @@ export default config({
     posts: collection({
       label: 'Posts',
       slugField: 'title',
-      path: 'src/content/posts/*',
+      path: 'src/content/posts/*/',
+      format: { contentField: 'content' },
       schema: {
         title: fields.slug({ name: { label: 'Title' } }),
         description: fields.text({ label: 'description', multiline: false } ),
@@ -22,7 +26,7 @@ export default config({
           links: true,
           images: {
             directory: 'src/assets/images/posts',
-            publicPath: '../../assets/images/posts/',
+            publicPath: '../../../assets/images/posts/',
           },
         }),
       },
@@ -30,7 +34,7 @@ export default config({
     page: collection({
       label: 'Pages',
       slugField: 'title',
-      path: 'src/content/pages/*',
+      path: 'src/content/pages/*/',
       format: { contentField: 'content' },
       schema: {
         title: fields.slug({ name: { label: 'Title' } }),
@@ -49,7 +53,7 @@ export default config({
           links: true,
           images: {
             directory: 'src/assets/images/pages',
-            publicPath: '../../assets/images/pages/',
+            publicPath: '../../../assets/images/pages/',
           },
         }),
       },
@@ -58,25 +62,62 @@ export default config({
   singletons: {
     seo: singleton({
       label: 'SEO',
-      path: 'src/content/seo',
+      path: 'src/content/seo/',
+      format: { contentField: 'scripts' },
       schema: {
         lang: fields.text({ label: 'lang', multiline: false } ),
         ogSiteName: fields.text({ label: 'ogSiteName', multiline: false } ),
+        ogLocal: fields.text({ label: 'ogLocal', multiline: false } ),
         favicon: fields.image({ label: 'favicon', directory: 'public/' }),
+        scripts: fields.document({
+          label: 'scripts',
+          formatting: true,
+          dividers: true,
+          links: true,
+          images: {
+            directory: 'src/assets/images/posts',
+            publicPath: '../../assets/images/posts/',
+          },
+        }),
       },
     }),
     MainPage: singleton({
       label: 'Main Page',
-      path: 'src/content/MainPage',
+      path: 'src/content/MainPage/',
+      format: { contentField: 'content' },
       schema: {
         title: fields.text({ label: 'title', multiline: false } ),
         description: fields.text({ label: 'description', multiline: false } ),
         ogType: fields.text({ label: 'ogType', multiline: false } ),
-        seoScripts: fields.document({
-          label: 'SEO Scripts',
+        content: fields.document({
+          label: 'Content',
           formatting: true,
           dividers: true,
           links: true,
+          images: {
+            directory: 'src/assets/images/main',
+            publicPath: '../../assets/images/main/',
+          },
+        }),
+      }
+    }),
+    PostPage: singleton({
+      label: 'Posts Page',
+      path: 'src/content/PostPage/',
+      format: { contentField: 'content' },
+      schema: {
+        title: fields.text({ label: 'title', multiline: false } ),
+        description: fields.text({ label: 'description', multiline: false } ),
+        ogType: fields.text({ label: 'ogType', multiline: false } ),
+        content: fields.document({
+          label: 'Content',
+          formatting: true,
+          dividers: true,
+          links: true,
+          images: {
+            directory: 'src/assets/images/posts',
+            publicPath: '../../assets/images/posts/',
+          },
         }),
       }
     }),
