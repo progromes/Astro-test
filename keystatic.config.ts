@@ -5,7 +5,7 @@ export default config({
     kind: 'cloud',
   },
   cloud: {
-    project: 'astro-test/astro-test',
+    project: 'astro-test/s121',
   },
   
   
