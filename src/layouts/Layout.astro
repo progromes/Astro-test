@@ -1,6 +1,5 @@
 ---
 import "@fontsource-variable/montserrat";
-
 import Header from "../components/Header.astro";
 import MainHead from "./MainHead.astro";
 import Footer from "../components/Footer.astro";
@@ -21,8 +20,7 @@ const { title, description, ogType} = Astro.props;
     title={title}
     description={description}
     ogType={ogType}
-    ogSiteName={setting.ogSiteName}
-    favicon={setting.favicon}
+    
   />
   <body class="bg-body text-white text-lg font-thin">
     <div class="wrapper flex flex-col h-screen">

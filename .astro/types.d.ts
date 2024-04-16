@@ -144,22 +144,6 @@ declare module 'astro:content' {
 } & { render(): Render[".mdoc"] };
 };
 "posts": {
-"first-post.mdoc": {
-	id: "first-post.mdoc";
-  slug: "first-post";
-  body: string;
-  collection: "posts";
-  data: any
-} & { render(): Render[".mdoc"] };
-};
-"settings": {
-"scripts.mdoc": {
-	id: "scripts.mdoc";
-  slug: "scripts";
-  body: string;
-  collection: "settings";
-  data: any
-} & { render(): Render[".mdoc"] };
 };
 
 	};
@@ -170,5 +154,5 @@ declare module 'astro:content' {
 
 	type AnyEntryMap = ContentEntryMap & DataEntryMap;
 
-	export type ContentConfig = never;
+	export type ContentConfig = typeof import("./../src/content/config.js");
 }
